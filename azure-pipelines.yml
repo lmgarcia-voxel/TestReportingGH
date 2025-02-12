@@ -24,7 +24,7 @@ stages:
     jobs:
     
       - job: Build_Job
-        displayName: Build Job
+        displayName: Build_Job_dn
         steps:
           - script: |
               echo Build Job --> Build.Reason [$(Build.Reason)] EnvironmentDeploy [$(EnvironmentDeploy)]
@@ -32,7 +32,7 @@ stages:
       
       - job: Publish_Job
         dependsOn: Build_Job
-        displayName: Publish Job
+        displayName: Publish_Job_dn
         condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
         steps:
           - script: |
