@@ -11,7 +11,7 @@ parameters:
 jobs:
     - deployment: Deploy
       environment: ${{parameters.environment}}
-      displayName: Deploy_${{parameters.environment}} $(myvar) Job
+      displayName: Deploy_${{parameters.environment}} Job
       strategy:
           runOnce:
               deploy:
