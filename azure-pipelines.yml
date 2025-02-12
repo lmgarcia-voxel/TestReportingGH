@@ -31,7 +31,7 @@ stages:
             displayName: 'Build Job'
       
       - job: Publish_Job
-        dependsOn: Build
+        dependsOn: Build_Job
         displayName: Publish Job
         condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
         steps:
