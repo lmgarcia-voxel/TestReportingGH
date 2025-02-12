@@ -28,7 +28,7 @@ stages:
         steps:
           - script: |
               echo Build Job --> Build.Reason [$(Build.Reason)] EnvironmentDeploy [$(EnvironmentDeploy)]
-            displayName: 'Build Job'
+            displayName: 'Build_Step_dn'
       
       - job: Publish_Job
         dependsOn: Build_Job
@@ -37,7 +37,7 @@ stages:
         steps:
           - script: |
               echo Publish Job --> Build.Reason [$(Build.Reason)] EnvironmentDeploy [$(EnvironmentDeploy)]
-            displayName: 'Publish Job'
+            displayName: 'Publish_Step_dn'
 
           - template: ./templates/publish-artifact.yml
             parameters:
