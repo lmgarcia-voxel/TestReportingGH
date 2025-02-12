@@ -1,0 +1,13 @@
+parameters:
+  - name: ArtifactName
+    type: string
+  - name: ProjectPath
+    type: string
+  - name: BuildConfiguration
+    type: string
+    default: Release
+
+steps:
+    - script: |
+              echo Template Publish Artifact --> Build.Reason [$(Build.Reason)] EnvironmentDeploy [$(EnvironmentDeploy)]
+      displayName: 'Template Publish Artifact'
