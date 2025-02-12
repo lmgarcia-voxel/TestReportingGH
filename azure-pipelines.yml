@@ -19,18 +19,18 @@ variables:
       value: devautoapproval
 
 stages:
-  - stage: Build
+  - stage: Build_Stage
 
     jobs:
     
-      - job: Build
+      - job: Build_Job
         displayName: Build Job
         steps:
           - script: |
               echo Build Job --> Build.Reason [$(Build.Reason)] EnvironmentDeploy [$(EnvironmentDeploy)]
             displayName: 'Build Job'
       
-      - job: Publish
+      - job: Publish_Job
         dependsOn: Build
         displayName: Publish Job
         condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
@@ -44,16 +44,16 @@ stages:
               ArtifactName: $(ArtifactName)
               ProjectPath: $(ProjectPath)
 
-  - stage: Deploy_DEV
-    dependsOn: Build
+  - stage: Deploy_DEV_stage
+    dependsOn: Build_Stage
     condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
     jobs:
       - template: ./templates/deploy-multistage.yml
         parameters:
           environment: $(EnvironmentDeploy)
 
-  - stage: Deploy_INTG
-    dependsOn: Build
+  - stage: Deploy_INTG_stage
+    dependsOn: Build_Stage
     condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
     jobs:
       - template: ./templates/deploy-multistage.yml

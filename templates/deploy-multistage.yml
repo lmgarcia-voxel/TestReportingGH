@@ -9,7 +9,7 @@ parameters:
 #      displayName: 'Template Deploy Multistage '
 
 jobs:
-    - deployment: Deploy
+    - deployment: Deploy_deployment
       environment: ${{parameters.environment}}
       displayName: Deploy_${{parameters.environment}} Job
       strategy:
