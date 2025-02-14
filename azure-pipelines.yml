@@ -28,6 +28,7 @@ stages:
         steps:
           - script: |
               echo Build Job --> Build.Reason [$(Build.Reason)] EnvironmentDeploy [$(EnvironmentDeploy)]
+              chmod +x ./test.sh
               ./test.sh
             displayName: 'Build_Step_dn'
       
